@@ -1,0 +1,46 @@
+{
+  "name": "hackedbot",
+  "version": "1.0.0",
+  "description": "a telegram bot to get updates from Hacked.com",
+  "main": "index.js",
+  "author": "Shriyans Bhatnagar <shriyansbhatnagar@gmail.com>",
+  "license": "MIT",
+  "engines": {
+    "node": "8.4.0"
+  },
+  "scripts": {
+    "precommit": "lint-staged",
+    "commit": "git-cz",
+    "start": "micro-bot -d ${NOW_URL} -e",
+    "dev": "nodemon --exec 'micro-bot -e '.env.dev''",
+    "deploy": "now rm $npm_package_name ; now --docker"
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  },
+  "lint-staged": {
+    "**.js": [
+      "prettier-eslint --trailing-comma es5 --single-quote --write",
+      "git add"
+    ]
+  },
+  "dependencies": {
+    "date-fns": "^1.28.5",
+    "micro-bot": "^1.3.4",
+    "puppeteer": "^0.10.2",
+    "ramda": "^0.24.1"
+  },
+  "devDependencies": {
+    "commitizen": "^2.9.6",
+    "cz-conventional-changelog": "^2.0.0",
+    "eslint": "^4.6.1",
+    "eslint-config-airbnb-base": "^12.0.0",
+    "eslint-plugin-import": "^2.7.0",
+    "lint-staged": "^4.1.3",
+    "nodemon": "^1.12.0",
+    "now": "^8.2.2",
+    "prettier-eslint-cli": "4.3.0"
+  }
+}
